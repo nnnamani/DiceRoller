@@ -16,16 +16,33 @@ class MainActivity : AppCompatActivity() {
             rollDice()
         }
 
+        val countUpButton: Button = findViewById(R.id.countup_button)
+        countUpButton.setOnClickListener {
+            countUp()
+        }
 
     }
 
     private fun rollDice() {
-         val randomInt = (1..6).random()
+        val randomInt = (1..6).random()
 
         val resultText: TextView = findViewById(R.id.result_text)
         resultText.text = randomInt.toString()
 
         //Toast.makeText(this, "button clicked",
         //    Toast.LENGTH_SHORT).show()
+    }
+
+    private fun countUp() {
+        val resultText: TextView = findViewById(R.id.result_text)
+        val currentNumber: Int? = resultText.text.toString().toIntOrNull()
+
+        if (currentNumber == null) {
+            resultText.text = "1"
+        } else {
+            if (currentNumber < 6) {
+                resultText.text = (currentNumber + 1).toString()
+            }
+        }
     }
 }
