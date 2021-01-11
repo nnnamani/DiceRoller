@@ -8,6 +8,8 @@ import android.widget.ImageView
 class MainActivity : AppCompatActivity() {
     lateinit var diceImage1 : ImageView
     lateinit var diceImage2 : ImageView
+    lateinit var rollButton : Button
+    lateinit var clearButton : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,9 +18,14 @@ class MainActivity : AppCompatActivity() {
         diceImage1 = findViewById(R.id.dice_image1)
         diceImage2 = findViewById(R.id.dice_image2)
 
-        val rollButton: Button = findViewById(R.id.roll_button)
+        rollButton = findViewById(R.id.roll_button)
         rollButton.setOnClickListener {
             rollDice()
+        }
+
+        clearButton = findViewById(R.id.clear_button)
+        clearButton.setOnClickListener {
+            clearDice()
         }
     }
 
@@ -36,5 +43,10 @@ class MainActivity : AppCompatActivity() {
             5 -> R.drawable.dice_5
             else -> R.drawable.dice_6
         }
+    }
+
+    private fun clearDice() {
+        diceImage1.setImageResource(R.drawable.empty_dice)
+        diceImage2.setImageResource(R.drawable.empty_dice)
     }
 }
